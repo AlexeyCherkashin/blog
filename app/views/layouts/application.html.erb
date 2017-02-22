@@ -25,8 +25,9 @@
         <li> <a href="https://instagram.com/alexey_nos"</li>
         <li> <a href="mailto:cherkashinalex@outlook.com"></a></li>
       </ul>
-      
+      <% if !user_signed_in? %>
       <p class="sign_in">Admin Login</p>
+      <% end %>
     </div>
     
     <div id="main_content">
@@ -38,11 +39,13 @@
         <% else %>
         <%= link_to "Back to all posts", root_path %>
         <% end %>
+        <% if user_signed_in? %>
         <div class="buttoins">
         <button class="button"><%= link_to "New post", new_post_path %></button>
         <button class="button">Log out</button>
         
       </div>
+      <% end %>
       </div>
       <% flash.each do |name, msg| %>
       <% content_tag(:div, msg, class: "alert") %>
